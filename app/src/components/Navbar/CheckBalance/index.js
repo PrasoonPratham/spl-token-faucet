@@ -9,10 +9,8 @@ const CheckBalance: FC = ({network, reload, balance, setBalance, solBalance, set
     const [provider, connection] = GetProvider(wallet, network);
     const publicKey = provider.wallet.publicKey;
     const networkMap = {
-      'https://api.devnet.solana.com': 'DEVNET',
-      'https://api.testnet.solana.com': 'TESTNET',
-      'http://127.0.0.1:8899': 'LOCALNET'
-    }
+      "https://staging-rpc.dev.eclipsenetwork.xyz/": "STAGING ECLIPSE",
+    };
 
   useEffect(() => {
     checkBalance();

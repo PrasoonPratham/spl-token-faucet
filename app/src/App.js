@@ -11,8 +11,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AirDrop from "./components/Airdrop";
 
-const App: FC = () => {
-	const [network, setNetwork] = useState("https://api.devnet.solana.com");
+const App = () => {
+	const [network, setNetwork] = useState(
+    "https://staging-rpc.dev.eclipsenetwork.xyz/"
+  );
 	const [reload, setReload] = useState(true);
 	const [autoConnect, _setAutoConnect] = useLocalStorage("autoConnect", false);
 	const search = window.location.search;

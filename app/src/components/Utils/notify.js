@@ -28,9 +28,8 @@ export function useNotify() {
     const styles = useStyles();
     const { enqueueSnackbar } = useSnackbar();
     const clusterMap = {
-      "https://api.devnet.solana.com": "devnet",
-      "https://api.testnet.solana.com": "testnet"
-    }
+      "https://staging-rpc.dev.eclipsenetwork.xyz/": "STAGING ECLIPSE",
+    };
 
     return useCallback(
         (variant: VariantType, message: string, signature?: string, cluster?: string) => {

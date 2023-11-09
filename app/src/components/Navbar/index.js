@@ -10,18 +10,6 @@ const Navbar: FC = ({ tokenName, reload, network }) => {
 
   return (
     <div className="navbar-wrapper">
-      <div className="notification-bar">
-        <p>
-          Are you a RUST engineer? Interested in building the future of debt
-          capital markets on Solana? Check out
-          <a
-            href="https://angel.co/company/credix/jobs/1720106-rust-developer-solana"
-            target={"_blank"}
-          >
-            the open positions at Credix.
-          </a>
-        </p>
-      </div>
       <div className="navbar-container">
         <div className="logo-and-tag-line">
           <span className="tag-line">{tokenName}-TOKEN-FAUCET</span>
@@ -40,7 +28,7 @@ const Navbar: FC = ({ tokenName, reload, network }) => {
           <div>
             <div className="balance-and-pk">
               <h1>
-                Balance: {solBalance} SOL, {balance} {tokenName}
+                Balance: {solBalance} ETH, {balance} {tokenName}
               </h1>
             </div>
           </div>

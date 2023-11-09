@@ -5,7 +5,7 @@ spl_token_faucet = "4sN8PnN2ki2W4TFXAfzR645FWs8nimmsYeNtxM8RBK6A"
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "localnet"
+cluster = "https://staging-rpc.dev.eclipsenetwork.xyz/"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
