@@ -54,7 +54,7 @@ describe("spl-token-faucet", () => {
 	it("Airdrop tokens 2 times and check token account", async () => {
 		// Get the PDA that is the mint for the faucet
 		const [mintPda, mintPdaBump] =
-			await anchor.web3.PublicKey.findProgramAddressSync(
+			await anchor.web3.PublicKey.findProgramAddress(
 				[Buffer.from(anchor.utils.bytes.utf8.encode("faucet-mint"))],
 				program.programId
 			);

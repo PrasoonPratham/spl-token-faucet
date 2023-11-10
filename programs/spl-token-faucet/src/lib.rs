@@ -31,7 +31,6 @@ pub mod spl_token_faucet {
     }
 }
 
-
 #[derive(Accounts)]
 #[instruction(mint_bump: u8)]
 pub struct InitializeFaucet<'info> {
@@ -39,11 +38,13 @@ pub struct InitializeFaucet<'info> {
         init_if_needed,
         payer = payer,
         seeds = [b"faucet-mint".as_ref()],
-        bump = mint_bump,
+        bump,
         mint::decimals = 6,
         mint::authority = mint
     )]
     pub mint: Account<'info, Mint>,
+    /// Mark the payer as mutable by adding 'mut' before Signer
+    #[account(mut)]
     pub payer: Signer<'info>,
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,
@@ -55,7 +56,7 @@ pub struct InitializeFaucet<'info> {
 pub struct Airdrop<'info> {
     #[account(
         seeds = [b"faucet-mint".as_ref()],
-        bump = mint_bump
+        bump,
     )]
     pub mint: Account<'info, Mint>,
 
@@ -66,7 +67,10 @@ pub struct Airdrop<'info> {
         associated_token::authority = receiver
     )]
     pub destination: Account<'info, TokenAccount>,
+    /// Mark the payer as mutable by adding 'mut' before Signer
+    #[account(mut)]
     pub payer: Signer<'info>,
+    /// CHECK: The `receiver` is a raw AccountInfo. No checks are necessary because it is not written to or read in a way that requires ownership or a particular state.
     pub receiver: AccountInfo<'info>,
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,

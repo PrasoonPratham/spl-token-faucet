@@ -1,4 +1,4 @@
-const anchor = require("@project-serum/anchor");
+const anchor = require("@coral-xyz/anchor");
 const {
 	TOKEN_PROGRAM_ID,
 	Token,
@@ -7,9 +7,11 @@ const {
 const { SystemProgram, PublicKey } = anchor.web3;
 
 // This will always use the key on ~/.config/solana/id.json
-let provider = anchor.Provider.env();
+let provider = new anchor.getProvider();
 anchor.setProvider(provider);
+console.log("provider address: " + provider.wallet.publicKey.toString());
 const program = anchor.workspace.SplTokenFaucet;
+console.log("program address: " + program.programId.toString());
 
 const amount = 10000;
 
@@ -22,10 +24,10 @@ async function airdrop_usdc() {
 	console.log(program.programId);
 	// Get the PDA that is the mint for the faucet
 	const [mintPda, mintPdaBump] =
-		await anchor.web3.PublicKey.findProgramAddressSync(
-			[Buffer.from(anchor.utils.bytes.utf8.encode("faucet-mint"))],
-			program.programId
-		);
+    await anchor.web3.PublicKey.findProgramAddressSync(
+      [Buffer.from(anchor.utils.bytes.utf8.encode("faucet-mint"))],
+      program.programId
+    );
 
 	// Get associated token account
 	const associatedTokenAccount = await Token.getAssociatedTokenAddress(

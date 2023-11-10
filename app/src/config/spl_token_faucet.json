@@ -1,13 +1,50 @@
 {
-  "version": "0.0.0",
+  "version": "0.1.0",
   "name": "spl_token_faucet",
   "instructions": [
+    {
+      "name": "initializeFaucet",
+      "accounts": [
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true,
+          "docs": ["Mark the payer as mutable by adding 'mut' before Signer"]
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "mintBump",
+          "type": "u8"
+        }
+      ]
+    },
     {
       "name": "airdrop",
       "accounts": [
         {
           "name": "mint",
-          "isMut": true,
+          "isMut": false,
           "isSigner": false
         },
         {
@@ -17,8 +54,9 @@
         },
         {
           "name": "payer",
-          "isMut": false,
-          "isSigner": true
+          "isMut": true,
+          "isSigner": true,
+          "docs": ["Mark the payer as mutable by adding 'mut' before Signer"]
         },
         {
           "name": "receiver",
@@ -57,8 +95,5 @@
         }
       ]
     }
-  ],
-  "metadata": {
-    "address": "4sN8PnN2ki2W4TFXAfzR645FWs8nimmsYeNtxM8RBK6A"
-  }
+  ]
 }
