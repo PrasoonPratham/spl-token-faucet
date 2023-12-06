@@ -13,7 +13,7 @@ import AirDrop from "./components/Airdrop";
 
 const App = () => {
 	const [network, setNetwork] = useState(
-    "https://staging-rpc.dev.eclipsenetwork.xyz/"
+    "https://staging-rpc.dev.eclipsenetwork.xyz"
   );
 	const [reload, setReload] = useState(true);
 	const [autoConnect, _setAutoConnect] = useLocalStorage("autoConnect", false);
